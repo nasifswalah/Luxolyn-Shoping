@@ -15,4 +15,12 @@ const suggestions = [
     },
 ];
 
+export const handleSubmit = () => {
+
+};
+
+export const handleChange = () => {
+
+};
+
 export { suggestions };

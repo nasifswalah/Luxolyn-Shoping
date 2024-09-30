@@ -6,7 +6,10 @@ export default {
   ],
   theme: {
     extend: {
-  
+      colors: {
+        'scrollbar-thumb': '#292929',
+        'scrollbar-track': '#292929',
+      },
     },
   },
   plugins: [

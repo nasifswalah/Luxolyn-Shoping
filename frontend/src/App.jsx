@@ -1,9 +1,15 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import LoginPage from "./pages/LoginPage";
-import HomePage from "./pages/HomePage";
-import SignUpPage from "./pages/SignUpPage";
-// import Navbar from "./components/Navbar";
+import Login from "./pages/Login";
+import Home from "./pages/Home";
+import SignUp from "./pages/SignUp";
 import Layout from "./hoc/Layout";
+import Search from "./pages/Search";
+import Profile from "./pages/Profile";
+import ProductDisplay from "./pages/ProductDisplay";
+import ProductCreation from "./pages/ProductCreation";
+import ProductUpdation from "./pages/ProductUpdation";
+import Cart from "./pages/Cart";
+import MyProducts from "./pages/MyProducts";
 
 function App() {
   const router = createBrowserRouter([
@@ -12,15 +18,43 @@ function App() {
       children: [
         {
           path: "/",
-          element: <HomePage />,
+          element: <Home/>,
         },
         {
           path: "/login",
-          element: <LoginPage />,
+          element: <Login/>,
         },
         {
           path: "/signup",
-          element: <SignUpPage />,
+          element: <SignUp/>,
+        },
+        {
+          path: "/search",
+          element: <Search/>,
+        },
+        {
+          path: "/profile",
+          element: <Profile/>,
+        },
+        {
+          path: "/listing",
+          element: <MyProducts/>,
+        },
+        {
+          path: "/view",
+          element: <ProductDisplay/>,
+        },
+        {
+          path: "/create",
+          element: <ProductCreation/>,
+        },
+        {
+          path: "/update",
+          element: <ProductUpdation/>,
+        },
+        {
+          path: "/cart",
+          element: <Cart/>,
         },
       ]
     },
