@@ -10,7 +10,7 @@ const InputField = ({type, value, onChange, placeholder, name }) => {
           value={value}
           onChange={onChange}
           placeholder={placeholder}
-          className="bg-[#292929] px-6 py-2 placeholder:text-[#464647] text-[#BCBCBC] rounded-full outline-none border-none font-medium"
+          className="bg-[#292929] px-6 py-2 placeholder:text-[#464647] text-[#BCBCBC] rounded-xl outline-none border-none font-medium"
         />
       </label>
     </div>

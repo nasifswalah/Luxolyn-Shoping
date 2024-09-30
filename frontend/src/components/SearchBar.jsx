@@ -4,7 +4,7 @@ import { shop } from "../assets";
 
 const SearchBar = () => {
   return (
-    <section className="absolute bottom-6 lg:left-8  w-full flex justify-center z-10">
+    <section className="absolute bottom-6 lg:left-8  w-full flex justify-center z-10 opacity-30 hover:opacity-100 transition duration-300 ">
       <div className="w-3/4 h-[55px] bg-[#161516] rounded-[50px] p-1.5">
         <div className="rounded-[55px] border border-[#474347] w-full h-11 flex items-center px-1 text-[#8D9191] ">
             <CirclePlus className="w-6 h-6 mr-2 ml-2"/>

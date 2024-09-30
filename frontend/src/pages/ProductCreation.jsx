@@ -1,9 +1,10 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { handleChange, handleSubmit } from '../constatnts/constants'
+import { category, handleChange, handleSubmit } from '../constatnts/constants'
 import InputField from '../components/InputField'
 import Button from '../components/Button'
-import { edit } from '../assets'
+import { create } from '../assets'
+import { Upload } from 'lucide-react'
 
 const ProductCreation = () => {
   return (
@@ -38,26 +39,39 @@ const ProductCreation = () => {
           placeholder="Product Price"
           onChange={handleChange}
         />
-        <InputField
+        <select
           type="text"
           name="category"
           placeholder="Product Category"
           onChange={handleChange}
-        />
+          className="bg-[#292929] px-6 py-2 placeholder:text-[#464647] text-[#BCBCBC] rounded-xl outline-none border-none font-medium"
+        >
+          <option value="">Select a category</option>
+          { category.map((category) => (
+            <option value={category} key={category}>
+              {category}
+            </option>
+          ))}
+        </select>
         <textarea
         rows={4}
           name="description"
           placeholder="Product Description"
           onChange={handleChange}
-          className="bg-[#292929] px-6 py-2 placeholder:text-[#464647] text-[#BCBCBC] rounded-2xl outline-none border-none font-medium"
+          className="bg-[#292929] px-6 py-2 placeholder:text-[#464647] text-[#BCBCBC] rounded-xl outline-none border-none font-medium"
         />
-        <InputField
-          type="file"
-          name="image"
-          placeholder="Product Images"
-          onChange={handleChange}
-        />
-        <Button name="Create" icon={edit} />
+        <div className='flex items-center'>
+					<input type='file' id='image' className='sr-only' accept='image/*' />
+					<label
+						htmlFor='image'
+						className='cursor-pointer bg-[#292929] flex-1 rounded-xl text-sm font-medium text-[#464647] hover:bg-[#363636] outline-none border-none px-6 py-2 flex items-center justify-center gap-2'
+					>
+						<Upload className='h-5 w-5 inline-block' />
+						Upload Image
+					</label>
+					<span className='ml-3 text-sm text-gray-400'>Image uploaded </span>
+				</div>
+        <Button name="Create" icon={create} />
       </motion.form>
     </div>
   )

@@ -6,8 +6,8 @@ import Button from './Button'
 
 const CartItem = () => {
   return (
-    <div className='w-64 md:h-1/2 h-fit bg-[#292929] rounded border border-[rgba(255,255,255,0.2)] flex  flex-col items-center justify-between p-3 md:gap-2 gap-5'>
-          <img src={sample} alt="image" className='h-32 md:h-32 rounded object-cover' />
+    <div className='w-60 md:h-[16.1rem] h-fit bg-[#292929] rounded border border-[rgba(255,255,255,0.2)] flex  flex-col items-center justify-between p-2 md:gap-1 gap-5'>
+          <img src={sample} alt="image" className='h-32 rounded object-cover' />
           <p className='text-center'>T-shirt </p>
           <div className='flex justify-around w-full'>
           <div className=' flex gap-2'>

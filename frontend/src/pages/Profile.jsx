@@ -17,21 +17,22 @@ const Profile = () => {
         transition={{ duration: 0.9, ease: "easeOut" }}
       >
         <User className="w-20 h-20 mx-auto mb-1" />
-        <h1>User Name</h1>
-        <p>Email</p>
-        <p>Role</p>
-        <span>Items in Cart</span>
-        <span>Puchase </span>
         {user.role === "seller" && (
-          <div className="flex justify-evenly gap-3">
-            <Link to="/listing">
+          <div className="flex justify-evenly gap-3 my-2">
+            <Link to="/listing" className="flex flex-col items-center text-xs text-[#868686] hover:text-[#EDEDED] transition duration-300 ">
               <LibraryBig  />
+              Your Products
             </Link>
-            <Link to="/create">
+            <Link to="/create" className="flex flex-col items-center text-xs text-[#868686] hover:text-[#EDEDED] transition duration-300">
               <FolderPlus />
+              Add New Product
             </Link>
           </div>
         )}
+        <h1>User Name</h1>
+        <p>Email</p>
+        <p>Role</p>
+        
         <Button name="Delete account" icon={trash} />
       </motion.div>
     </div>

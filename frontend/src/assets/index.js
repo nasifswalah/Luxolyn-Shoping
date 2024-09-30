@@ -9,6 +9,7 @@ import trash from '../assets/delete.svg'
 import sample from '../assets/SampleImg.png'
 import create from '../assets/create.svg'
 import edit from '../assets/edit.svg'
+import logo from '../assets/luxolyn-logo.png'
 
 
 export {
@@ -23,4 +24,5 @@ export {
     confirm,
     create,
     edit,
+    logo,
 };
