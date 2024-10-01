@@ -1,14 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { FolderPlus, LibraryBig, User } from "lucide-react";
 import Button from "../components/Button";
 import { trash } from "../assets";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchProductsStart, fetchProductsFailure, fetchProductsSuccess } from '../store/productSlice.js';
+import toast from 'react-hot-toast';
+import axios from '../lib/axios.js'
 
 const Profile = () => {
 
   const { user } = useSelector((state) => state.user);
+  const { products } = useSelector((state) => state.product);
+
+  const dispatch = useDispatch();
+
+  const getMyProducts = async () => {
+    dispatch(fetchProductsStart());
+    try {
+      const res = await axios.get('/products');
+      dispatch(fetchProductsSuccess(res.data.products))
+      console.log(products);
+    } catch (error) {
+      dispatch(fetchProductsFailure());
+      toast.error(error.response.data.message || "Failed to fetch products");
+    }
+  };
+
 
   return (
     <div className="relative xl:h-[97vh] h-screen xl:w-[95vw] w-screen xl:border border-[rgba(255,255,255,0.2)] xl:rounded-lg bg-[#141414] backdrop-blur-md flex flex-col justify-center">
@@ -23,7 +42,7 @@ const Profile = () => {
         {user.role === "seller" && (
           <div className="flex justify-evenly gap-3 my-2">
             <Link to="/listing" className="flex flex-col items-center text-xs text-[#868686] hover:text-[#EDEDED] transition duration-300 ">
-              <LibraryBig  />
+              <LibraryBig  onClick={getMyProducts} />
               Your Products
             </Link>
             <Link to="/create" className="flex flex-col items-center text-xs text-[#868686] hover:text-[#EDEDED] transition duration-300">
