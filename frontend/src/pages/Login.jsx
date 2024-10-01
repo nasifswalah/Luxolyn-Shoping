@@ -26,7 +26,7 @@ const Login = () => {
       dispatch(authStart());
       const res = await axios.post("/auth/login", formData);
       const data = res.data;
-      dispatch(authSuccess(data));
+      dispatch(authSuccess(data.user));
       toast.success(data.message);
       setFormData({
         email: "",

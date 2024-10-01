@@ -33,7 +33,7 @@ const SignUp = () => {
       const { confirmPassword, ...signupData } = formData;
       const res = await axios.post("/auth/signup", signupData);
       const data = res.data;
-      dispatch(authSuccess(data));
+      dispatch(authSuccess(data.user));
       toast.success(data.message);
       setFormData({
         name: "",

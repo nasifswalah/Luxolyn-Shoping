@@ -10,6 +10,7 @@ import sample from '../assets/SampleImg.png'
 import create from '../assets/create.svg'
 import edit from '../assets/edit.svg'
 import logo from '../assets/luxolyn-logo.png'
+import upload from '../assets/upload.svg'
 
 
 export {
@@ -25,4 +26,5 @@ export {
     create,
     edit,
     logo,
+    upload,
 };

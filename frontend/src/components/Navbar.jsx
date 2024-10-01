@@ -62,7 +62,7 @@ const Navbar = () => {
         <User className="text-[#464646] w-6 h-6 hover:text-[#868686] transition duration-300" />
       </Link>
       {user ? (
-          <LogOut className="text-[#464646] w-6 h-6 hover:text-[#868686] transition duration-300" onClick={logOut} />
+          <LogOut className="text-[#464646] w-6 h-6 hover:text-[#868686] transition duration-300 cursor-pointer" onClick={logOut} />
       ) : (
         <Link to="/login">
           <LogIn className="text-[#464646] w-6 h-6 hover:text-[#868686] transition duration-300" />

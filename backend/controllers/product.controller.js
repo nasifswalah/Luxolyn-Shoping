@@ -14,32 +14,47 @@ export const getAllProducts = async (req, res) => {
 
 export const createProduct = async (req, res) => {
   try {
-    const { name, description, price, image, category } = req.body;
-
-    let cloudinaryResponse = null;
-
-    if (image) {
-      cloudinaryResponse = await cloudinary.uploader.upload(image, {
-        folder: "products",
-      });
-    }
-
+    const { name, description, price, images, category } = req.body;
+    
     const product = await Product.create({
       name,
       description,
       price,
       category,
-      image: cloudinaryResponse?.secure_url
-        ? cloudinaryResponse.secure_url
-        : "",
-      seller: req.user._id,
+      images,
+      seller: req.user,
     });
 
     res.status(201).json({ product, message: "New product added" });
   } catch (error) {
-    res.status(500).json({ message: "Server error", error: error.message });
+    res.status(500).json({ message: error.message });
   }
 };
+
+export const uploadImage = async (req, res) => {
+  try {
+    if (!req.files) {
+      return res.status(400).json({ message: 'No files provided' });
+    }
+
+    const uploadedImageUrls = [];
+    // Upload each file to Cloudinary
+    const uploadPromises = req.files.map(file =>
+      cloudinary.uploader.upload(file.path, {
+        folder: 'products'
+      })
+    );
+
+    const result = await Promise.all(uploadPromises);
+
+    result.forEach(r => {
+      uploadedImageUrls.push(r.secure_url);
+    });
+    res.status(200).json({ images: uploadedImageUrls });
+  } catch (error) {
+    res.status(500).json({ message: "Only jpg, jpeg, png, gif formats are supported " });    
+  }
+}
 
 export const deleteProduct = async (req, res) => {
   try {
@@ -49,9 +64,9 @@ export const deleteProduct = async (req, res) => {
       return res.status(404).json({ message: "Product not found" });
     }
 
-    if (product.image) {
+    if (product.images) {
       try {
-        const publicId = product.image.split("/").pop().split(".")[0];
+        const publicId = product.images.split("/").pop().split(".")[0];
         await cloudinary.uploader.destroy(`products/${publicId}`);
       } catch (error) {
         res.status(500).json({ message: error.message });
