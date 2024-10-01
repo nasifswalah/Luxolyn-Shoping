@@ -17,12 +17,6 @@ const suggestions = [
 
 const category = [ "Shirt", "T-shirt", "Pants", "Jeans", "Sports Wear", "Shoes", "Footwear", "Inner Wear", "Gadgets", "Smart Watches", "Electronics", "Home appliances", "Kids", "Ladies", "Gents", ];
 
-export const handleSubmit = () => {
 
-};
-
-export const handleChange = () => {
-
-};
 
 export { suggestions, category };

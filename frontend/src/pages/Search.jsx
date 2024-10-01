@@ -14,6 +14,6 @@ const Search = () => {
       </motion.div>
     </div>
   )
-}
+};
 
 export default Search

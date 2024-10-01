@@ -44,17 +44,17 @@ export const login = async (req, res)  => {
             await storeRefreshToken(user._id, refreshToken);
             setCookies(res, accessToken, refreshToken);
 
-            res.json({
+            res.json({ user: {
                 _id: user._id,
                 name: user.name,
                 email: user.email,
                 role: user.role,
-            });
+            }, message: "Logged in successfully"});
         } else {
            res.status(401).json({ message: "Invalid email or password"});
         }
     } catch (error) {
-        res.status(500).json({ message: "Server error", error: error.message });
+        res.status(500).json({ message: error.message });
     }
 };
 
@@ -70,7 +70,7 @@ export const logout = async (req, res)  => {
     res.clearCookie("refreshToken");
     res.json({ message: "Logged out successfully"});
    } catch (error) {
-    res.status(500).json({ message: error.message});
+    res.status(500).json({ message: error.message });
    }
 };
 
@@ -103,4 +103,3 @@ export const refreshAccessToken = async (req, res) => {
         res.status(500).json({ message: "Server error", error: error.message });
     }
 }
-
