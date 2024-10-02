@@ -9,9 +9,6 @@ const cartSlice = createSlice({
     name: 'cart',
     initialState,
     reducers: {
-        getCartItemsFailure: (state) => {
-            state.cart = null;
-        }, 
         getCartItemsSuccess: (state, action) => {
             state.cart = action.payload;
         }, 
@@ -24,6 +21,6 @@ const cartSlice = createSlice({
     },
 });
 
-export const { getCartItemsSuccess, getCartItemsFailure, updateCartItems, setCartTotalAmount } = cartSlice.actions;
+export const { getCartItemsSuccess, updateCartItems, setCartTotalAmount } = cartSlice.actions;
 
 export default cartSlice.reducer;

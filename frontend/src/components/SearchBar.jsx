@@ -11,7 +11,7 @@ const SearchBar = () => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [ searchTerm, setSearchTerm] = useState();
+  const [ searchTerm, setSearchTerm ] = useState();
 
   const handleSearch = async () => {
     try {
@@ -20,7 +20,7 @@ const SearchBar = () => {
       })
       dispatch(setSearchProducts(res.data.searchResult));      
       navigate('/search');
-      setSearchTerm('');
+      setSearchTerm(null);
     } catch (error) {
       setSearchTerm('');
       toast.error(error.response.data.message || "Failed to fetch products");

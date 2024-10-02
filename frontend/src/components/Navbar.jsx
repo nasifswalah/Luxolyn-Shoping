@@ -14,7 +14,7 @@ import { useDispatch, useSelector } from "react-redux";
 import axios from '../lib/axios.js';
 import { logOutFailure, logoutStart, logOutSuccess } from "../store/userSlice.js";
 import toast from "react-hot-toast";
-import { getCartItemsFailure, getCartItemsSuccess } from "../store/cartSlice.js";
+import { getCartItemsSuccess } from "../store/cartSlice.js";
 
 
 
@@ -37,7 +37,6 @@ const Navbar = () => {
       dispatch(getCartItemsSuccess(res.data));
       console.log(cart);
     } catch (error) {
-      dispatch(getCartItemsFailure());
       toast.error(error.response.data.message || "Failed to fetch cart items");
     }
   };

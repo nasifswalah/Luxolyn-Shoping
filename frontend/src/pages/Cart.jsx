@@ -11,7 +11,7 @@ const Cart = () => {
   const { cart } = useSelector((state) => state.cart);
 
   return (
-    <section className="relative xl:h-[97vh] h-screen xl:w-[95vw] w-screen xl:border border-[rgba(255,255,255,0.2)] xl:rounded-lg bg-[#141414] backdrop-blur-md flex px-4 py-2 gap-2">
+    <section className="relative xl:h-[97vh] h-screen xl:w-[95vw] w-screen xl:border border-[rgba(255,255,255,0.2)] xl:rounded-lg bg-[#141414] backdrop-blur-md flex px-4 py-2 gap-2 lg:flex-row flex-col">
         <div className="absolute top-100 w-full h-screen leading-[60.75px] bg-[radial-gradient(ellipse_at_bottom,rgba(121,12,105,0.129)_0%,rgba(13,5,28,0)_85%)]" />
         <motion.div
 						className='mx-auto w-full flex-none lg:max-w-2xl xl:max-w-4xl'
@@ -33,7 +33,7 @@ const Cart = () => {
 
 					{cart.length > 0 && (
 						<motion.div
-							className='mx-auto mt-6 max-w-4xl flex-1 space-y-6 lg:mt-0 lg:w-full'
+							className='mx-auto mt-6 max-w-4xl flex-1 space-y-6 lg:mt-0 w-full'
 							initial={{ opacity: 0, x: 20 }}
 							animate={{ opacity: 1, x: 0 }}
 							transition={{ duration: 0.5, delay: 0.4 }}
