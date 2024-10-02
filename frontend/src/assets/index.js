@@ -11,6 +11,10 @@ import create from '../assets/create.svg'
 import edit from '../assets/edit.svg'
 import logo from '../assets/luxolyn-logo.png'
 import upload from '../assets/upload.svg'
+import shirts from '../assets/shirts.jpg'
+import tshirts from '../assets/t-shirt.png'
+import pants from '../assets/pants.jpg'
+import watches from '../assets/watches.jpg'
 
 
 export {
@@ -27,4 +31,8 @@ export {
     edit,
     logo,
     upload,
+    shirts,
+    tshirts,
+    pants,
+    watches,
 };

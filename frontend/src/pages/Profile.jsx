@@ -33,7 +33,7 @@ const Profile = () => {
     <div className="relative xl:h-[97vh] h-screen xl:w-[95vw] w-screen xl:border border-[rgba(255,255,255,0.2)] xl:rounded-lg bg-[#141414] backdrop-blur-md flex flex-col justify-center">
       <div className="absolute top-100 w-full h-screen leading-[60.75px] bg-[radial-gradient(ellipse_at_bottom,rgba(121,12,105,0.129)_0%,rgba(13,5,28,0)_85%)]" />
       <motion.div
-        className="sm:w-96 w-[90vw] mx-auto p-5 bg-[#292929] text-[#EDEDED] rounded-lg flex flex-col gap-4"
+        className="sm:w-96 w-[90vw] mx-auto p-5 bg-[rgba(61,27,56,0.24)] border border-[rgba(255,255,255,0.2)] text-[#EDEDED] rounded-lg flex flex-col gap-4"
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.9, ease: "easeOut" }}

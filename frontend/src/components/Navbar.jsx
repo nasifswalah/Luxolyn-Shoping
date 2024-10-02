@@ -14,16 +14,36 @@ import { useDispatch, useSelector } from "react-redux";
 import axios from '../lib/axios.js';
 import { logOutFailure, logoutStart, logOutSuccess } from "../store/userSlice.js";
 import toast from "react-hot-toast";
+import { getCartItemsFailure, getCartItemsSuccess } from "../store/cartSlice.js";
 
 
 
 const Navbar = () => {
   const { user } = useSelector((state) => state.user);
+  const { cart } = useSelector((state) => state.cart)
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const handleClick = () => {
+  if(!user){
+    toast.error("Please login first", { id: "login"});
+  }
+}
+
+  const getCartItems = async() => {
+    try {
+      const res = await axios.get('/cart');
+      dispatch(getCartItemsSuccess(res.data));
+      console.log(cart);
+    } catch (error) {
+      dispatch(getCartItemsFailure());
+      toast.error(error.response.data.message || "Failed to fetch cart items");
+    }
+  };
+
   const logOut = async() => {
+    handleClick();
       try {
         dispatch(logoutStart())
         const data = await axios.post('/auth/logout');
@@ -50,16 +70,11 @@ const Navbar = () => {
       <Link to="/search">
         <Search className="text-[#464646] w-6 h-6 hover:text-[#868686] transition duration-300" />
       </Link>
-      {user?.role === "seller" && (
-        <Link to="/listing">
-          <LibraryBig className="text-[#464646] w-6 h-6 hover:text-[#868686] transition duration-300" />
-        </Link>
-      )}
       <Link to="/cart">
-        <ShoppingCart className="text-[#464646] w-6 h-6 hover:text-[#868686] transition duration-300" />
+        <ShoppingCart className="text-[#464646] w-6 h-6 hover:text-[#868686] transition duration-300" onClick={getCartItems} /> 
       </Link>
       <Link to="/profile">
-        <User className="text-[#464646] w-6 h-6 hover:text-[#868686] transition duration-300" />
+        <User className="text-[#464646] w-6 h-6 hover:text-[#868686] transition duration-300" onClick={handleClick} />
       </Link>
       {user ? (
           <LogOut className="text-[#464646] w-6 h-6 hover:text-[#868686] transition duration-300 cursor-pointer" onClick={logOut} />

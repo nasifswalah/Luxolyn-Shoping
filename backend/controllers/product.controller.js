@@ -107,7 +107,7 @@ export const recommendedProducts = async (req, res) => {
     }
 };
 
-export const getProductsByCategory = async (req, res) => {
+export const getProductsBySearch = async (req, res) => {
     try {
         const { category } = req.params;
         const products = await Product.find({ category });

@@ -27,7 +27,7 @@ export const addToCart = async (req, res) => {
             user.cartItems.push(productId);
         }
          await user.save();
-        res.status(201).json(user.cartItems, { message: "Added to cart"});
+        res.status(201).json({ message: "Added to cart"});
     } catch (error) {
         res.status(500).json({ message: "Server error", error: error.message});
     }
@@ -45,7 +45,7 @@ export const removeFromCart = async (req, res) => {
         }
 
         await user.save();
-        res.status(201).json(user.cartItems, { message: "Remove from cart"});
+        res.status(201).json({ message: "Remove from cart"});
     } catch (error) {
         res.status(500).json({ message: "Server error", error: error.message});
     }
@@ -54,12 +54,13 @@ export const removeFromCart = async (req, res) => {
 export const updateQuantity = async (req, res) => {
     try {
         const { id: productId } = req.params;
-        const { quantity } = req.body;
+        const { quantity, price } = req.body;
         const user = req.user;
         const existingItem = user.cartItems.find((item) => item.id === productId);
 
         if(existingItem) {
             existingItem.quantity = quantity;
+            existingItem.price = price;
             await user.save();
             res.json(user.cartItems);
         } else {

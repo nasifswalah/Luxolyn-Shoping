@@ -3,7 +3,7 @@ import {
   createProduct,
   deleteProduct,
   getAllProducts,
-  getProductsByCategory,
+  getProductsBySearch,
   recommendedProducts,
   uploadImage,
 } from "../controllers/product.controller.js";
@@ -14,7 +14,7 @@ const router = express.Router();
 
 router.get("/", protectRoute, sellerRoute, getAllProducts);
 router.get("/recommendations", recommendedProducts);
-router.get("/category/:category", getProductsByCategory);
+router.get("/:keyword", getProductsBySearch);
 router.post("/create", protectRoute, sellerRoute, createProduct);
 router.post("/upload", protectRoute, sellerRoute, upload.array('images', 4), uploadImage);
 router.delete("/delete/:id", protectRoute, sellerRoute, deleteProduct);
