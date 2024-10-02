@@ -6,7 +6,7 @@ import ProductCard from '../components/ProductCard';
 
 const Search = () => {
 
-  const { products } = useSelector((state) => state.product);
+  const { searchProducts } = useSelector((state) => state.product);
 
   return (
     <div className="relative xl:h-[97vh] h-screen xl:w-[95vw] w-screen xl:border border-[rgba(255,255,255,0.2)] xl:rounded-lg bg-[#141414] backdrop-blur-md flex p-8">
@@ -26,31 +26,13 @@ const Search = () => {
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ duration: 0.8, delay: 0.2 }}
 				>
-					{products?.length === 0 && (
+					{searchProducts?.length === 0 && (
 						<h2 className='text-3xl font-semibold text-gray-300 text-center col-span-full'>
 							No products found
 						</h2>
 					)}
 
-					{products?.map((product) => (
-						<ProductCard key={product._id} product={product} />
-					))}
-					{products?.map((product) => (
-						<ProductCard key={product._id} product={product} />
-					))}
-					{products?.map((product) => (
-						<ProductCard key={product._id} product={product} />
-					))}
-					{products?.map((product) => (
-						<ProductCard key={product._id} product={product} />
-					))}
-					{products?.map((product) => (
-						<ProductCard key={product._id} product={product} />
-					))}
-					{products?.map((product) => (
-						<ProductCard key={product._id} product={product} />
-					))}
-					{products?.map((product) => (
+					{searchProducts?.map((product) => (
 						<ProductCard key={product._id} product={product} />
 					))}
 				</motion.div>

@@ -21,7 +21,6 @@ const Profile = () => {
     try {
       const res = await axios.get('/products');
       dispatch(fetchProductsSuccess(res.data.products))
-      console.log(products);
     } catch (error) {
       dispatch(fetchProductsFailure());
       toast.error(error.response.data.message || "Failed to fetch products");

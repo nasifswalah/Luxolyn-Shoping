@@ -84,35 +84,30 @@ export const deleteProduct = async (req, res) => {
   }
 };
 
-export const recommendedProducts = async (req, res) => {
-    try {
-        const products = await Product.aggregate([
-            {
-                $sample: { size: 3}
-            },
-            {
-                $project: {
-                    _id: 1,
-                    name: 1,
-                    description: 1,
-                    image: 1,
-                    price: 1
-                }
-            }
-        ]);
-
-        res.json(products);
-    } catch (error) {
-        res.status(500).json({ message: "Server error", error: error.message});
-    }
-};
-
 export const getProductsBySearch = async (req, res) => {
-    try {
-        const { category } = req.params;
-        const products = await Product.find({ category });
-        res.json(products);
-    } catch (error) {
-        res.status(500).json({ message: "Server error", error: error.message});
+  try {
+    const searchTerm = req.query.searchTerm;
+    console.log(searchTerm);
+    
+    const regex = new RegExp(searchTerm, 'i', 'g');
+
+    const searchResult = await Product.find({ 
+      "$or" : [
+        {
+          name: regex
+        },
+        {
+          category: regex
+        }
+      ]
+    });
+
+    if(!searchResult){
+      return res.status(404).json({ message: "No data found"});
     }
+    
+    res.status(200).json({searchResult});
+  } catch (error) {
+    res.status(500).json({ message: "Server error", error: error.message});
+  }
 };
