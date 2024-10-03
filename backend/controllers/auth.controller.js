@@ -89,13 +89,13 @@ export const refreshAccessToken = async (req, res) => {
             return res.status(401).json({ message: "Invalid token" });
         }
 
-        const accessToken = jwt.sign({ userId: decoded.userId }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: "30m"});
+        const accessToken = jwt.sign({ userId: decoded.userId }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: "1d"});
 
         res.cookie('accessToken', accessToken, {
             httpOnly: true,
             secure: process.env.NODE_ENV === "production",
             sameSite: "strict",
-            maxAge: 30 * 60 * 1000
+            maxAge: 24 * 60 * 60 * 1000 
         });
 
         res.json({ message: "Token refreshed successfully"});

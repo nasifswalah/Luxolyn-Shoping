@@ -16,17 +16,11 @@ const Search = () => {
   useEffect(() => {
 	const searchResult = async () => {
 		try {
-			console.log(searchTerm);
-			
 		  const res = await axios.get('/products/search', {
 			params : { searchTerm }
 		  })
-			setSearchResult(res.data.searchResult)     
-			console.log(res.data.searchResult)     
-			console.log(res.data)     
+			setSearchResult(res.data.searchResult)         
 		} catch (error) {
-			console.log(error);
-			
 		  toast.error(error?.response?.data?.message || "Failed to fetch products");
 		}
 	  };

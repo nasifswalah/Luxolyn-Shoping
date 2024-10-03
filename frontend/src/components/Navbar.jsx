@@ -38,11 +38,8 @@ const Navbar = () => {
     try {
       const res = await axios.get('/cart');
       dispatch(getCartItemsSuccess(res.data));
-      console.log(cart);
     } catch (error) {
-      console.log(error);
-      
-      toast.error(error.response.data.message || "Failed to fetch cart items");
+      toast.error(error?.response?.data?.message || "Failed to fetch cart items");
     }
   };
 
@@ -53,7 +50,7 @@ const Navbar = () => {
         const data = await axios.post('/auth/logout');
         dispatch(logOutSuccess());
         toast.success(data.data.message);
-        navigate('/');
+        navigate('/login');
       } catch (error) {
         dispatch(logOutFailure());
         toast.error(error?.response?.data?.message || "An error occured during logout");

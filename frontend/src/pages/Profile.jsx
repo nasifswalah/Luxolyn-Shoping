@@ -1,8 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 import { FolderPlus, LibraryBig, User } from "lucide-react";
-import Button from "../components/Button";
-import { trash } from "../assets";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProductsStart, fetchProductsFailure, fetchProductsSuccess } from '../store/productSlice.js';
@@ -12,7 +10,6 @@ import axios from '../lib/axios.js'
 const Profile = () => {
 
   const { user } = useSelector((state) => state.user);
-  const { products } = useSelector((state) => state.product);
 
   const dispatch = useDispatch();
 
@@ -23,7 +20,7 @@ const Profile = () => {
       dispatch(fetchProductsSuccess(res.data.products))
     } catch (error) {
       dispatch(fetchProductsFailure());
-      toast.error(error.response.data.message || "Failed to fetch products");
+      toast.error(error?.response?.data?.message || "Failed to fetch products");
     }
   };
 

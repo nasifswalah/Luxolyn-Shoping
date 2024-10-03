@@ -19,7 +19,7 @@ const MyProducts = () => {
       toast.success(res.data.message);
     } catch (error) {
       dispatch(deleteProductFailure());
-      toast.error(error.response.data.message || "Failed to delete product");
+      toast.error(error?.response?.data?.message || "Failed to delete product");
     }
   };
 

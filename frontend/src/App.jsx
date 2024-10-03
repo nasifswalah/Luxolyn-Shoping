@@ -7,7 +7,6 @@ import Search from "./pages/Search";
 import Profile from "./pages/Profile";
 import ProductDisplay from "./pages/ProductDisplay";
 import ProductCreation from "./pages/ProductCreation";
-import ProductUpdation from "./pages/ProductUpdation";
 import Cart from "./pages/Cart";
 import MyProducts from "./pages/MyProducts";
 import { Toaster } from "react-hot-toast";
@@ -59,10 +58,6 @@ const router = createBrowserRouter([
               {
                 path: "/create",
                 element: <ProductCreation />,
-              },
-              {
-                path: "/update",
-                element: <ProductUpdation />,
               },
             ],
           },

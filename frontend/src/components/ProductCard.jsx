@@ -18,7 +18,7 @@ const ProductCard = ({ product }) => {
             dispatch(setSelectedProduct(res.data.product));        
             navigate('/view');
         } catch (error) {
-            toast.error(error.response.data.message || "Failed fetch selected product");
+            toast.error(error?.response?.data?.message || "Failed fetch selected product");
         }
     };
 
@@ -32,7 +32,7 @@ const ProductCard = ({ product }) => {
                 const res = await axios.post('/cart', { productId : product._id});
                 toast.success(res.data.message);
             } catch (error) {
-                toast.error(error.response.data.message || "Failed to add into cart");
+                toast.error(error?.response?.data?.message || "Failed to add into cart");
             }
 		}
 	};

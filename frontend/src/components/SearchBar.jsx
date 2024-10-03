@@ -14,7 +14,7 @@ const SearchBar = () => {
             <CirclePlus className="w-6 h-6 mr-2 ml-2"/>
             <input type="text" placeholder="Ask me something..." className="placeholder-[#8D9191] font-normal text-sm flex-1 bg-transparent outline-none placeholder:'ASk'" onChange={(e) => setSearchTerm(e.target.value)} value={searchTerm}/>
             <Link to={`/search/${searchTerm}`}>
-            <button className="lg:w-28  h-9 w-9  bg-white sm:rounded-[55px] rounded-full flex items-center justify-center gap-2 text-black font-normal text-sm"  >
+            <button className="lg:w-28  h-9 w-9  bg-white sm:rounded-[55px] rounded-full flex items-center justify-center gap-2 text-black font-normal text-sm" onClick={() => setSearchTerm('')} >
                 <img src={shop} alt="" />
                 <p className="sm:block hidden">Shop</p>
             </button>

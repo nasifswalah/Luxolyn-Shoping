@@ -21,7 +21,6 @@ const CartItem = ({ item }) => {
         return;
       }
       const res = await axios.put(`/cart/${itemId}`, { quantity });
-      console.log(res.data);
       const currentProducts = cart.map((product) => {
         if (product._id === itemId) {
           return { ...product, quantity };
@@ -33,7 +32,6 @@ const CartItem = ({ item }) => {
       toast.error(
         error?.response?.data?.message || "Failed to upadate quantity"
       );
-      console.log(error);
     }
   };
 
@@ -46,7 +44,7 @@ const CartItem = ({ item }) => {
       dispatch(updateCartItems(currentProducts));
       toast.success(res.data.message);
     } catch (error) {
-      toast.error(error.response.data.message || "Failed to remove cart item");
+      toast.error(error?.response?.data?.message || "Failed to remove cart item");
     }
   };
 
