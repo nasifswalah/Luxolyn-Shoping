@@ -2,8 +2,6 @@ import React from "react";
 import {
   House,
   LogOut,
-  Search,
-  LibraryBig,
   LogIn,
   ShoppingCart,
   User,
@@ -28,15 +26,22 @@ const Navbar = () => {
   const handleClick = () => {
   if(!user){
     toast.error("Please login first", { id: "login"});
+    return;
   }
 }
 
   const getCartItems = async() => {
+    if(!user){
+      toast.error("Please login first", { id: "login"});
+      return;
+    }
     try {
       const res = await axios.get('/cart');
       dispatch(getCartItemsSuccess(res.data));
       console.log(cart);
     } catch (error) {
+      console.log(error);
+      
       toast.error(error.response.data.message || "Failed to fetch cart items");
     }
   };
@@ -65,9 +70,6 @@ const Navbar = () => {
 
       <Link to="/">
         <House className="text-[#464646] w-6 h-6 hover:text-[#868686] transition duration-300" />
-      </Link>
-      <Link to="/search">
-        <Search className="text-[#464646] w-6 h-6 hover:text-[#868686] transition duration-300" />
       </Link>
       <Link to="/cart">
         <ShoppingCart className="text-[#464646] w-6 h-6 hover:text-[#868686] transition duration-300" onClick={getCartItems} /> 

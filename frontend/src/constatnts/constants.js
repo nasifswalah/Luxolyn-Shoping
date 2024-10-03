@@ -15,14 +15,7 @@ const suggestions = [
     },
 ];
 
-const category = [ "Shirt", "T-shirt", "Pants", "Jeans", "Sports Wear", "Shoes", "Footwear", "Inner Wear", "Gadgets", "Smart Watches", "Electronics", "Home appliances", "Kids", "Ladies", "Gents", ];
-
-// const categories = [
-// 	{ href: "/pants", name: "Pants", imageUrl: "/jeans.jpg" },
-// 	{ href: "/t-shirts", name: "T-shirts", imageUrl: "/tshirts.jpg" },
-// 	{ href: "/shirts", name: "Shoes", imageUrl: "/shoes.jpg" },
-// 	{ href: "/watches", name: "Glasses", imageUrl: "/glasses.png" },
-// ];
+const category = [ "Shirt", "T-shirt", "Pants", "Jeans", "Shoes", "Footwear", "Watches", "Kids", "Women", "Mens", ];
 
 
 export { suggestions, category };

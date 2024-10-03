@@ -87,7 +87,6 @@ export const deleteProduct = async (req, res) => {
 export const getProductsBySearch = async (req, res) => {
   try {
     const searchTerm = req.query.searchTerm;
-    console.log(searchTerm);
     
     const regex = new RegExp(searchTerm, 'i', 'g');
 
