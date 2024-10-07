@@ -7,6 +7,7 @@ import path from 'path'
 import authRoutes from './routes/auth.routes.js';
 import productRoute from './routes/product.route.js';
 import cartRoute from './routes/cart.route.js';
+import paymentRoute from './routes/payment.route.js';
 
 
 import { connectDB } from './lib/db.js';
@@ -24,6 +25,7 @@ app.use(cookieParser());
 app.use('/api/auth',authRoutes);
 app.use('/api/products', productRoute);
 app.use('/api/cart', cartRoute);
+app.use('/api/payment', paymentRoute);
 
 if (process.env.NODE_ENV === "production") {
 	app.use(express.static(path.join(__dirname, "/frontend/dist")));
